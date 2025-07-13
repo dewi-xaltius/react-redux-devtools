@@ -1,27 +1,16 @@
-import { useState } from 'react'
-
-import './App.css'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { increment, decrement } from './store/counterSlice';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const dispatch = useDispatch();
 
-  return (
-    <>
-      
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div>
+            <button onClick={() => dispatch(increment())}>Increment</button>
+            <button onClick={() => dispatch(decrement())}>Decrement</button>
+        </div>
+    );
 }
 
-export default App
+export default App;
